@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+                http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+
+	<persistence-unit name="DefaultDS" transaction-type="JTA">
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+		<jta-data-source>java:/SigmaDS</jta-data-source>
+		<!-- Hibernate properties -->
+		<properties>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.physical_naming_strategy"
+				value="br.com.sigma.processo.distribuicao.base.config.CamelCaseImproveStrategy" />
+			<property name="hibernate.archive.autodetection" value="class" />
+
+			<property name="hibernate.hbm2ddl.auto" value="update" />
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="javax.persistence.validation.mode" value="CALLBACK"/>
+			<property name="javax.persistence.validation.group.pre-update" value=""/>
+			<property name="org.hibernate.envers.default_schema" value="auditoria"/>
+		</properties>
+	</persistence-unit>
+
+</persistence>
